@@ -39,17 +39,17 @@ resource "mongodbatlas_cluster" "cluster" {
   
   lifecycle {}
 
-  replication_specs {
-    num_shards = local.atlas.atlas-cluster-type == "REPLICASET"? 1 : local.atlas.atlas-shard-number
-    # dynamic "regions_config" {
-    #     for_each = var.replication-specs
-    #     content {
-    #         region_name     = regions_cofig.value.region
-    #         electable_nodes = regions_cofig.value.electable-nodes
-    #         analytics_nodes = regions_cofig.value.analytics-nodes
-    #         read_only_nodes = regions_cofig.value.read-only-nodes
-    #         priority        = regions_cofig.value.priority
-    #     }
-    # }
-  }
+#   replication_specs {
+#     num_shards = local.atlas.atlas-cluster-type == "REPLICASET"? 1 : local.atlas.atlas-shard-number
+#     dynamic "regions_config" {
+#         for_each = var.replication-specs
+#         content {
+#             region_name     = regions_cofig.value.region
+#             electable_nodes = regions_cofig.value.electable-nodes
+#             analytics_nodes = regions_cofig.value.analytics-nodes
+#             read_only_nodes = regions_cofig.value.read-only-nodes
+#             priority        = regions_cofig.value.priority
+#         }
+#     }
+#   }
 }

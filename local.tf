@@ -11,7 +11,7 @@ locals {
         atlas-geo-sharded-cluster                   = false
         # atlas-cluster-type                          = "REPLICASET"
         atlas-azure-disk-type-name                  = "P4"
-        atlas-shard-number                          = 0
+        # atlas-shard-number                          = 1
         mongo-db-version                            = "4.4"
         # atlas-db-compute-auto-scaling-enabled       = false
         # atlas-db-compute-auto-scaling-size-minimum  = "M0"
