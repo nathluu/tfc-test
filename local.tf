@@ -6,7 +6,7 @@ locals {
         atlas-autoscaling-disk                      = true
         cloud-backup                                = true
         point-in-time-backups                       = true
-        atlas-cluster-tier                          = "M0"
+        atlas-cluster-tier                          = "M2"
         atlas-cluster-name                          = "lhtantest01"
         atlas-geo-sharded-cluster                   = false
         atlas-cluster-type                          = "REPLICASET"
@@ -14,7 +14,7 @@ locals {
         atlas-shard-number                          = 0
         mongo-db-version                            = "4.4"
         atlas-db-compute-auto-scaling-enabled       = true
-        atlas-db-compute-auto-scaling-size-minimum  = "M2"
+        atlas-db-compute-auto-scaling-size-minimum  = "M0"
         atlas-db-compute-auto-scaling-size-maximum  = "M5"
         # tags                                        = {
         #     "database-owner" = "lhtan"
