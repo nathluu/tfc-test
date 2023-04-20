@@ -9,7 +9,7 @@ locals {
         atlas-cluster-tier                          = "M2"
         atlas-cluster-name                          = "lhtantest01"
         atlas-geo-sharded-cluster                   = false
-        atlas-cluster-type                          = "REPLICASET"
+        # atlas-cluster-type                          = "REPLICASET"
         atlas-azure-disk-type-name                  = "P4"
         atlas-shard-number                          = 0
         mongo-db-version                            = "4.4"
