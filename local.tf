@@ -1,4 +1,4 @@
-local {
+locals {
     atlas = {
         atlas-project-id                            = "6440a1bca25f4142836bb575"
         cloud-provider-name                         = "AZURE"
