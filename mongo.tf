@@ -3,6 +3,7 @@
 # }
 
 resource "mongodbatlas_cluster" "cluster" {
+  count                         = 0
   name                          = local.atlas.atlas-cluster-name
   project_id                    = local.atlas.atlas-project-id
   provider_instance_size_name   = local.atlas.atlas-cluster-tier
