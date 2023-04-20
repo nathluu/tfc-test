@@ -10,7 +10,7 @@ resource "mongodbatlas_cluster" "cluster" {
   auto_scaling_disk_gb_enabled  = local.atlas.atlas-autoscaling-disk
 #   backup_enabled                = local.atlas.atlas-legacy-backups
   cloud_backup                  = local.atlas.cloud-backup
-  cluster_type                  = local.atlas.atlas-geo-sharded-cluster == false ? local.atlas.atlas-cluster-type : "GEOSHARDED"
+#   cluster_type                  = local.atlas.atlas-geo-sharded-cluster == false ? local.atlas.atlas-cluster-type : "GEOSHARDED"
   provider_disk_type_name       = local.atlas.atlas-azure-disk-type-name
   mongo_db_major_version        = local.atlas.mongo-db-version
   pit_enabled                   = local.atlas.point-in-time-backups
@@ -39,17 +39,17 @@ resource "mongodbatlas_cluster" "cluster" {
   
   lifecycle {}
 
-  replication_specs {
-    num_shards = local.atlas.atlas-cluster-type == "REPLICASET"? 1 : local.atlas.atlas-shard-number
-    # dynamic "regions_config" {
-    #     for_each = var.replication-specs
-    #     content {
-    #         region_name     = regions_cofig.value.region
-    #         electable_nodes = regions_cofig.value.electable-nodes
-    #         analytics_nodes = regions_cofig.value.analytics-nodes
-    #         read_only_nodes = regions_cofig.value.read-only-nodes
-    #         priority        = regions_cofig.value.priority
-    #     }
-    # }
-  }
+#   replication_specs {
+#     num_shards = local.atlas.atlas-cluster-type == "REPLICASET"? 1 : local.atlas.atlas-shard-number
+#     dynamic "regions_config" {
+#         for_each = var.replication-specs
+#         content {
+#             region_name     = regions_cofig.value.region
+#             electable_nodes = regions_cofig.value.electable-nodes
+#             analytics_nodes = regions_cofig.value.analytics-nodes
+#             read_only_nodes = regions_cofig.value.read-only-nodes
+#             priority        = regions_cofig.value.priority
+#         }
+#     }
+#   }
 }
