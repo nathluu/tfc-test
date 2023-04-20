@@ -1,6 +1,6 @@
-resource "random_id" "cluster-name-suffix" {
-    byte_length = 4
-}
+# resource "random_id" "cluster-name-suffix" {
+#     byte_length = 4
+# }
 
 resource "mongodbatlas_cluster" "cluster" {
   name                          = local.atlas.atlas-cluster-name
