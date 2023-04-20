@@ -7,7 +7,7 @@ provider "azurerm" {
     features {}
 }
 
-provider "mongoatlas" {
+provider "mongodbatlas" {
     public_key  = var.mongoatlas-public-key
     private_key = var.mongoatlas-private-key
 }
