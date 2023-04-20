@@ -14,7 +14,7 @@ locals {
         atlas-shard-number                          = 0
         mongo-db-version                            = "4.4"
         atlas-db-compute-auto-scaling-enabled       = true
-        atlas-db-compute-auto-scaling-size-minimum  = "M0"
+        atlas-db-compute-auto-scaling-size-minimum  = "M2"
         atlas-db-compute-auto-scaling-size-maximum  = "M5"
         # tags                                        = {
         #     "database-owner" = "lhtan"
