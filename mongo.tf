@@ -52,4 +52,13 @@ resource "mongodbatlas_cluster" "cluster" {
 #         }
 #     }
 #   }
+  replication_specs {
+    num_shards = local.atlas.atlas-cluster-type == "REPLICASET"? 1 : local.atlas.atlas-shard-number
+    regions_config {
+      region_name     = "US_WEST_2"
+      electable_nodes = 3
+      priority        = 7
+      read_only_nodes = 0
+    }
+  }
 }
