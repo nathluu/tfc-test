@@ -32,10 +32,10 @@ resource "mongodbatlas_cluster" "cluster" {
 #     }
 #   }
 
-  auto_scaling_compute_enabled                    = local.atlas.atlas-db-compute-auto-scaling-enabled
-  auto_scaling_compute_scale_down_enabled         = local.atlas.atlas-db-compute-auto-scaling-enabled
-  provider_auto_scaling_compute_min_instance_size = local.atlas.atlas-db-compute-auto-scaling-enabled ? local.atlas.atlas-db-compute-auto-scaling-size-minimum : ""
-  provider_auto_scaling_compute_max_instance_size = local.atlas.atlas-db-compute-auto-scaling-enabled ? local.atlas.atlas-db-compute-auto-scaling-size-maximum : ""
+#   auto_scaling_compute_enabled                    = local.atlas.atlas-db-compute-auto-scaling-enabled
+#   auto_scaling_compute_scale_down_enabled         = local.atlas.atlas-db-compute-auto-scaling-enabled
+#   provider_auto_scaling_compute_min_instance_size = local.atlas.atlas-db-compute-auto-scaling-enabled ? local.atlas.atlas-db-compute-auto-scaling-size-minimum : ""
+#   provider_auto_scaling_compute_max_instance_size = local.atlas.atlas-db-compute-auto-scaling-enabled ? local.atlas.atlas-db-compute-auto-scaling-size-maximum : ""
   
   lifecycle {}
 
