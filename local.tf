@@ -2,7 +2,7 @@ locals {
     atlas = {
         atlas-project-id                            = "6440a1bca25f4142836bb575"
         cloud-provider-name                         = "AZURE"
-        atlas-legacy-backups                        = false
+        # atlas-legacy-backups                        = false
         atlas-autoscaling-disk                      = true
         cloud-backup                                = true
         point-in-time-backups                       = true
