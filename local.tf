@@ -16,8 +16,8 @@ locals {
         atlas-db-compute-auto-scaling-enabled       = true
         atlas-db-compute-auto-scaling-size-minimum  = 1
         atlas-db-compute-auto-scaling-size-maximum  = 4
-        tags                                    = {
-            database-owner = lhtan
-        }
+        # tags                                        = {
+        #     "database-owner" = "lhtan"
+        # }
     }
 }

@@ -15,22 +15,22 @@ resource "mongodbatlas_cluster" "cluster" {
   mongo_db_major_version        = local.atlas.mongo-db-version
   pit_enabled                   = local.atlas.point-in-time-backups
 
-  bi_connector_config {
-    enabled         = var.enable-bi-connector
-    read_preference = var.read-preference
-  }
+#   bi_connector_config {
+#     enabled         = var.enable-bi-connector
+#     read_preference = var.read-preference
+#   }
   
   advanced_configuration {
     minimum_enabled_tls_protocol = "TLS1_2"
   }
 
-  dynamic "labels" {
-    for_each = local.atlas.tags
-    content {
-        key   = labels.key
-        value = labels.value
-    }
-  }
+#   dynamic "labels" {
+#     for_each = local.atlas.tags
+#     content {
+#         key   = labels.key
+#         value = labels.value
+#     }
+#   }
 
   auto_scaling_compute_enabled                    = local.atlas.atlas-db-compute-auto-scaling-enabled
   auto_scaling_compute_scale_down_enabled         = local.atlas.atlas-db-compute-auto-scaling-enabled
