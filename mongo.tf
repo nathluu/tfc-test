@@ -10,7 +10,7 @@ resource "mongodbatlas_cluster" "cluster" {
   auto_scaling_disk_gb_enabled  = local.atlas.atlas-autoscaling-disk
 #   backup_enabled                = local.atlas.atlas-legacy-backups
   cloud_backup                  = local.atlas.cloud-backup
-#   cluster_type                  = local.atlas.atlas-geo-sharded-cluster == false ? local.atlas.atlas-cluster-type : "GEOSHARDED"
+  cluster_type                  = local.atlas.atlas-geo-sharded-cluster == false ? local.atlas.atlas-cluster-type : "GEOSHARDED"
   provider_disk_type_name       = local.atlas.atlas-azure-disk-type-name
   mongo_db_major_version        = local.atlas.mongo-db-version
   pit_enabled                   = local.atlas.point-in-time-backups
@@ -32,10 +32,10 @@ resource "mongodbatlas_cluster" "cluster" {
 #     }
 #   }
 
-#   auto_scaling_compute_enabled                    = local.atlas.atlas-db-compute-auto-scaling-enabled
-#   auto_scaling_compute_scale_down_enabled         = local.atlas.atlas-db-compute-auto-scaling-enabled
-#   provider_auto_scaling_compute_min_instance_size = local.atlas.atlas-db-compute-auto-scaling-enabled ? local.atlas.atlas-db-compute-auto-scaling-size-minimum : ""
-#   provider_auto_scaling_compute_max_instance_size = local.atlas.atlas-db-compute-auto-scaling-enabled ? local.atlas.atlas-db-compute-auto-scaling-size-maximum : ""
+  auto_scaling_compute_enabled                    = local.atlas.atlas-db-compute-auto-scaling-enabled
+  auto_scaling_compute_scale_down_enabled         = local.atlas.atlas-db-compute-auto-scaling-enabled
+  provider_auto_scaling_compute_min_instance_size = local.atlas.atlas-db-compute-auto-scaling-enabled ? local.atlas.atlas-db-compute-auto-scaling-size-minimum : ""
+  provider_auto_scaling_compute_max_instance_size = local.atlas.atlas-db-compute-auto-scaling-enabled ? local.atlas.atlas-db-compute-auto-scaling-size-maximum : ""
   
   lifecycle {}
 
