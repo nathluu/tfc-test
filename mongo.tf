@@ -9,7 +9,7 @@ resource "mongodbatlas_cluster" "cluster" {
   provider_name                 = local.atlas.cloud-provider-name
   auto_scaling_disk_gb_enabled  = local.atlas.atlas-autoscaling-disk
   backup_enabled                = local.atlas.atlas-legacy-backups
-  provider_backup_enabled       = local.atlas.cloud-backup
+  cloud_backup                  = local.atlas.cloud-backup
   cluster_type                  = local.atlas.atlas-geo-sharded-cluster == false ? local.atlas.atlas-cluster-type : "GEOSHARDED"
   provider_disk_type_name       = local.atlas.atlas-azure-disk-type-name
   mongo_db_major_version        = local.atlas.mongo-db-version
