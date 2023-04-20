@@ -1,33 +1,23 @@
-local {
-    atlas-project-name      = ""
-    cloud-provider-name     = "AZURE"
-    atlas-legacy-backups    = false
-    atlas-autoscaling-disk  = true
-    cloud-backup            = true
-    point-in-time-backups   = true
-}
-
 resource "random_id" "cluster-name-suffix" {
     byte_length = 4
 }
 
 resource "mongodbatlas_cluster" "cluster" {
-  name                          = var.atlas-cluster-name
-  project_id                    = var.atlas-project-id
-  provider_instance_size_name   = var.atlas-cluster-tier
-  provider_name                 = local.cloud-provider-name
-  auto_scaling_disk_gb_enabled  = local.atlas-autoscaling-disk
-  backup_enabled                = local.atlas-legacy-backups
-  provider_backup_enabled       = local.cloud-backup
-  cluster_type                  = var.atlas-geo-sharded-cluster == false? var.atlas-cluster-type : "GEOSHARDED"
-  provider_disk_type_name       = var.atlas-azure-disk-type-name
-  mongo_db_major_version        = var.mongo-db-version
-  pit_enabled                   = local.point-in-time-backups
+  name                          = local.atlas.atlas-cluster-name
+  project_id                    = local.atlas.atlas-project-id
+  provider_instance_size_name   = local.atlas.atlas-cluster-tier
+  provider_name                 = local.atlas.cloud-provider-name
+  auto_scaling_disk_gb_enabled  = local.atlas.atlas-autoscaling-disk
+  backup_enabled                = local.atlas.atlas-legacy-backups
+  provider_backup_enabled       = local.atlas.cloud-backup
+  cluster_type                  = local.atlas.atlas-geo-sharded-cluster == false ? local.atlas.atlas-cluster-type : "GEOSHARDED"
+  provider_disk_type_name       = local.atlas.atlas-azure-disk-type-name
+  mongo_db_major_version        = local.atlas.mongo-db-version
+  pit_enabled                   = local.atlas.point-in-time-backups
 
   bi_connector_config {
-    enabled = var.enable-bi-connector
+    enabled         = var.enable-bi-connector
     read_preference = var.read-preference
-
   }
   
   advanced_configuration {
@@ -35,33 +25,31 @@ resource "mongodbatlas_cluster" "cluster" {
   }
 
   dynamic "labels" {
-    for_each = var.tags
+    for_each = local.atlas.tags
     content {
-        key = labels.key
+        key   = labels.key
         value = labels.value
     }
   }
 
-  auto_scaling_compute_enabled                    = var.atlas-db-compute-auto-scaling-enabled
-  auto_scaling_compute_scale_down_enabled         = var.atlas-db-compute-auto-scaling-enabled
-  provider_auto_scaling_compute_min_instance_size = var.atlas-db-compute-auto-scaling-enabled? var.atlas-db-compute-auto-scaling-size-minimum : ""
-  provider_auto_scaling_compute_max_instance_size = var.atlas-db-compute-auto-scaling-enabled? var.atlas-db-compute-auto-scaling-size-maximum : ""
+  auto_scaling_compute_enabled                    = local.atlas.atlas-db-compute-auto-scaling-enabled
+  auto_scaling_compute_scale_down_enabled         = local.atlas.atlas-db-compute-auto-scaling-enabled
+  provider_auto_scaling_compute_min_instance_size = local.atlas.atlas-db-compute-auto-scaling-enabled ? local.atlas.atlas-db-compute-auto-scaling-size-minimum : ""
+  provider_auto_scaling_compute_max_instance_size = local.atlas.atlas-db-compute-auto-scaling-enabled ? local.atlas.atlas-db-compute-auto-scaling-size-maximum : ""
   
-  lifecycle {
-
-  }
+  lifecycle {}
 
   replication_specs {
-    num_shards = var.atlas-cluster-type == "REPLICASET"? 1 : var.atlas-shard-number
-    dynamic "regions_config" {
-        for_each = var.replication-specs
-        content {
-            region_name     = regions_cofig.value.region
-            electable_nodes = regions_cofig.value.electable-nodes
-            analytics_nodes = regions_cofig.value.analytics-nodes
-            read_only_nodes = regions_cofig.value.read-only-nodes
-            priority        = regions_cofig.value.priority
-        }
-    }
+    num_shards = local.atlas.atlas-cluster-type == "REPLICASET"? 1 : local.atlas.atlas-shard-number
+    # dynamic "regions_config" {
+    #     for_each = var.replication-specs
+    #     content {
+    #         region_name     = regions_cofig.value.region
+    #         electable_nodes = regions_cofig.value.electable-nodes
+    #         analytics_nodes = regions_cofig.value.analytics-nodes
+    #         read_only_nodes = regions_cofig.value.read-only-nodes
+    #         priority        = regions_cofig.value.priority
+    #     }
+    # }
   }
 }
