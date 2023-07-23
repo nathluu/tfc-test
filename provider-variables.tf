@@ -19,10 +19,10 @@ variable "usr-skip-provider-registration" {
     default = true
 }
 
-# variable "mongoatlas-public-key" {
-#     type = string
-# }
+variable "mongoatlas-public-key" {
+    type = string
+}
 
-# variable "mongoatlas-private-key" {
-#     type = string
-# }
+variable "mongoatlas-private-key" {
+    type = string
+}
