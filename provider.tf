@@ -7,22 +7,22 @@ provider "azurerm" {
     features {}
 }
 
-provider "mongodbatlas" {
-    public_key  = var.mongoatlas-public-key
-    private_key = var.mongoatlas-private-key
-}
+# provider "mongodbatlas" {
+#     public_key  = var.mongoatlas-public-key
+#     private_key = var.mongoatlas-private-key
+# }
 
 terraform {
-    required_version = ">= 0.13"
+    required_version = ">= 1.4.0"
     required_providers {
         azurerm = {
             source  = "hashicorp/azurerm"
-            version = "~> 2.98.0"
+            version = ">= 2.98.0"
         }
 
-        mongodbatlas = {
-            source  = "mongodb/mongodbatlas"
-            version = "~> 1.8.2"
-        }
+        # mongodbatlas = {
+        #     source  = "mongodb/mongodbatlas"
+        #     version = "~> 1.8.2"
+        # }
     }
 }
