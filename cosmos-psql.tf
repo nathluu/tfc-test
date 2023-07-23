@@ -3,10 +3,10 @@ resource "azurerm_cosmosdb_postgresql_cluster" "cosmosdbpsql" {
   resource_group_name             = local.cosmospsql.usr-resource-grp
   location                        = local.cosmospsql.usr-location
   administrator_login_password    = "H@Sh1CoR3!"
-  coordinator_storage_quota_in_mb = 32768
+  coordinator_storage_quota_in_mb = 131072
   coordinator_vcore_count         = 2
   node_count                      = 2
-  node_storage_quota_in_mb        = 32768
+  node_storage_quota_in_mb        = 131072
   node_vcores                     = 2
 }
 
