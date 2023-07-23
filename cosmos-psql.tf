@@ -1,4 +1,4 @@
-resource "azurerm_cosmosdb_postgresql_cluster" "example" {
+resource "azurerm_cosmosdb_postgresql_cluster" "cosmosdbpsql" {
   name                            = local.cosmospsql.usr-name
   resource_group_name             = local.cosmospsql.usr-resource-grp
   location                        = local.cosmospsql.usr-location
@@ -10,8 +10,8 @@ resource "azurerm_cosmosdb_postgresql_cluster" "example" {
   node_vcores                     = 2
 }
 
-resource "azurerm_cosmosdb_postgresql_node_configuration" "example" {
+resource "azurerm_cosmosdb_postgresql_node_configuration" "cosmosdbpsqlcfg" {
   name       = "array_nulls"
-  cluster_id = azurerm_cosmosdb_postgresql_cluster.example.id
+  cluster_id = azurerm_cosmosdb_postgresql_cluster.cosmosdbpsql.id
   value      = "on"
 }
